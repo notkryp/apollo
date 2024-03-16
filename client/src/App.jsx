@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import Footer from "./components/Footer";
 import Dashboard from "./components/Dashboard";
+import FacultyCard from "./components/FacultyCard";
+import StudentsCard from "./components/StudentsCard";
 
 const App = () => {
   return (
@@ -23,6 +25,8 @@ const App = () => {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/gallery/faculty" element={<FacultyCard />} />
+          <Route path="/gallery/students" element={<StudentsCard />} />
         </Routes>
         <section className="bg-[#00994B] padding-x padding-t pb-8 mt-3">
           <Footer />

@@ -4,14 +4,14 @@ import school from "../assets/school.jpg";
 const AboutUs = () => {
   return (
     <>
-      <div className="text-[#00994B] flex flex-col gap-6 max-sm:gap-4 ">
-        <div className="mt-6">
+      <div className="text-[#00994B] flex flex-col gap-6 max-sm:gap-4 w-full h-full">
+        <div className="mt-6 w-full">
           <span className=" flex justify-center text-bold text-7xl lg:max-xl:text-6xl md:max-lg:text-5xl sm:max-md:text-4xl max-sm:text-3xl">
             About Us
           </span>
         </div>
-        <div>
-          <img src={school} alt="school" className="" />
+        <div className="w-screen flex items-center justify-center">
+          <img src={school} alt="school" className="object-cover 2xl:w-[100rem] 2xl:h-[40rem]" />
         </div>
         <div className="text-justify lg:max-xl:px-24 md:max-lg:px-16 sm:max-md:px-12 max-sm:px-8 px-36 font-palanquin">
           <span>

@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <section>
+      <div className="flex">
+        <div>
+          <h1>left</h1>
+        </div>
+        <div>
+          <h1>right</h1>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

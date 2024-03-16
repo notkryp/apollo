@@ -1,14 +1,52 @@
 import { Button, Label, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 const SignIn = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    navigate("/dashboard");
+  const [user, setUser] = useState({});
+
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.id]: e.target.value });
+    console.log(user)
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (
+      !user.email ||
+      !user.password ||
+      user.email === "" ||
+      user.password === ""
+    ) {
+      alert("All fields are required from frontend");
+    }
+
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
+
+      const data = await res.json();
+
+      if (data.success === false) {
+        alert(data.message);
+      }
+
+      if (res.ok) {
+        navigate("/dashboard");
+        alert("Login Successfull");
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <>
       <div className="min-h-screen mt-20">
@@ -30,6 +68,7 @@ const SignIn = () => {
                   type="text"
                   placeholder="name@company.com"
                   id="email"
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -38,6 +77,7 @@ const SignIn = () => {
                   type="password"
                   placeholder="***********"
                   id="password"
+                  onChange={handleChange}
                 />
                 <Button
                   className="bg-[#00994B] px-2 mt-6"
